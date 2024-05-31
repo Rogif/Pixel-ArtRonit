@@ -35,3 +35,9 @@ function mouseClicked(event) {
   fill(currentColors[pixelX][pixelY]);
   rect(pixelX * (CANVAS_WIDTH / PIXEL_RESOLUTION_WIDTH), pixelY * (CANVAS_HEIGHT / PIXEL_RESOLUTION_HEIGHT), (CANVAS_WIDTH / PIXEL_RESOLUTION_WIDTH), (CANVAS_HEIGHT / PIXEL_RESOLUTION_HEIGHT));
 }
+
+function keyPressed() {
+  if (key == 's') {
+    saveCanvas('photo', 'jpg');
+  }
+}
