@@ -18,8 +18,19 @@ function setup() {
   }
   // create reset button
   resetButton = createButton('Reset');
-  resetButton.position(50, CANVAS_HEIGHT + 70);
+  resetButton.position((windowWidth - CANVAS_WIDTH) / 2, (windowHeight - CANVAS_HEIGHT) / 2 + CANVAS_HEIGHT + 70);
   resetButton.mousePressed(resetCanvas);
+}
+
+function resetCanvas() {
+  currentColors = new Array(PIXEL_RESOLUTION_WIDTH).fill().map(() => new Array(PIXEL_RESOLUTION_HEIGHT).fill(BackColor));
+  background(BackColor);
+  for (let i = 0; i < PIXEL_RESOLUTION_WIDTH; i++) {
+    for (let j = 0; j < PIXEL_RESOLUTION_HEIGHT; j++) {
+      fill(BackColor); // Set the fill color to BackColor
+      rect(i * (CANVAS_WIDTH / PIXEL_RESOLUTION_WIDTH), j * (CANVAS_HEIGHT / PIXEL_RESOLUTION_HEIGHT), (CANVAS_WIDTH / PIXEL_RESOLUTION_WIDTH), (CANVAS_HEIGHT / PIXEL_RESOLUTION_HEIGHT));
+    }
+  }
 }
 
 function draw() {
@@ -47,12 +58,3 @@ function keyPressed() {
   }
 }
 
-function resetCanvas() {
-  currentColors = new Array(PIXEL_RESOLUTION_WIDTH).fill().map(() => new Array(PIXEL_RESOLUTION_HEIGHT).fill(BackColor));
-  background;
-  for (let i = 0; i < PIXEL_RESOLUTION_WIDTH; i++) {
-    for (let j = 0; j < PIXEL_RESOLUTION_HEIGHT; j++) {
-      rect(i * (CANVAS_WIDTH / PIXEL_RESOLUTION_WIDTH), j * (CANVAS_HEIGHT / PIXEL_RESOLUTION_HEIGHT), (CANVAS_WIDTH / PIXEL_RESOLUTION_WIDTH), (CANVAS_HEIGHT / PIXEL_RESOLUTION_HEIGHT));
-    }
-  }
-}
