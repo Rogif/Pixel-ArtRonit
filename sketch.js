@@ -9,7 +9,8 @@ let PIXEL_RESOLUTION_HEIGHT = 10;
 let resetButton;
 
 function setup() {
-  createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+  var canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+  canvas.parent('daddy');
   currentColors = new Array(PIXEL_RESOLUTION_WIDTH).fill().map(() => new Array(PIXEL_RESOLUTION_HEIGHT).fill(BackColor));
   background(BackColor);
   for (let i = 0; i < PIXEL_RESOLUTION_WIDTH; i++) {
@@ -19,7 +20,8 @@ function setup() {
   }
   // create reset button
   resetButton = createButton('Reset');
-  resetButton.position(50, CANVAS_HEIGHT + 70);
+  resetButton.parent('daddy');
+  resetButton.position(150, CANVAS_HEIGHT + 70);
   resetButton.mousePressed(resetCanvas);
 }
 

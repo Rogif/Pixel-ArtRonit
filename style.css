@@ -4,6 +4,14 @@ body {
   padding: 0;
 }
 
+#canvasContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* Adjust as needed */
+}
+
 canvas {
   display: block;
 }
