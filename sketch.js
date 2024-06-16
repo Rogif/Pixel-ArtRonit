@@ -1,4 +1,5 @@
 let DRAW_COLOR = 'red';
+let availableColors = ['red', 'green', 'blue', 'yellow', 'black'];
 let BackColor = 'white';
 let currentColors = [];
 let CANVAS_WIDTH = 400;
@@ -18,7 +19,7 @@ function setup() {
   }
   // create reset button
   resetButton = createButton('Reset');
-  resetButton.position((windowWidth - CANVAS_WIDTH) / 2, (windowHeight - CANVAS_HEIGHT) / 2 + CANVAS_HEIGHT + 70);
+  resetButton.position(50, CANVAS_HEIGHT + 70);
   resetButton.mousePressed(resetCanvas);
 }
 
@@ -37,11 +38,16 @@ function draw() {
 
 }
 
+function chooseRandomColor() {
+  return availableColors[Math.floor(Math.random() * availableColors.length)];
+}
+
 function mouseClicked(event) {
   let pixelX = Math.floor(mouseX / (CANVAS_WIDTH / PIXEL_RESOLUTION_WIDTH));
   let pixelY = Math.floor(mouseY / (CANVAS_HEIGHT / PIXEL_RESOLUTION_HEIGHT));
   console.log(currentColors);
   if (currentColors[pixelX][pixelY] === BackColor) {
+    DRAW_COLOR = chooseRandomColor();
     currentColors[pixelX][pixelY] = DRAW_COLOR;
   }
   else {
